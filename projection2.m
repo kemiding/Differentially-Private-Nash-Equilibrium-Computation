@@ -1,6 +1,7 @@
 function [y_new] = projection2(y,radius,center,N)
-%UNTITLED2 此处显示有关此函数的摘要
-%   此处显示详细说明
+% this function is the projection operator used in Algorithm 2, which project any input y into a spherical set with parameters center and radius
+% N is the node number (size of y)
+% y_new is the projected point 
 
 dif_y = y - ones(1,N).* center;
 y_new = zeros(N,N);
