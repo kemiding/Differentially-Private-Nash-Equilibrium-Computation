@@ -1,6 +1,9 @@
 function [rho_m,h_M,alpha_1,alpha_2,s_m,alpha] = parameter_check1(H,ComG,N, s)
-%UNTITLED3 此处显示有关此函数的摘要
+
 %   check the satisfactory of parameters' conditions 
+%   ComG: the structure of the communication graph
+%   N: number of node
+
 A = (H')^(-1);
 if min(A,[],'all')>=0
     fprintf('Assumption 1 is satisfied as the inverse of I-G is nonnegative.\n');
@@ -14,7 +17,7 @@ lambda = sort(eig(ComG_L));
 lambda_n = max(lambda);
 lambda_0 = min(lambda);
 
-%[bool,in]=gsp_check_connectivity_undirected( ComG);
+%[bool,in]=gsp_check_connectivity_undirected( ComG); %% another method to check the connectivity of the communication graph
 
 %if bool ==1
 if lambda_0>=0
