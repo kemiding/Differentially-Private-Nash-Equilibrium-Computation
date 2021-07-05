@@ -75,6 +75,32 @@ save('matlab.m')
 
 %[rho_m,h_M,alpha_1,alpha_2,s_m,alpha] = parameter_check1(H_SF,G_Com2.L,N, s);
 
+%%%% create coords function
 
+function [ XCoords, YCoords] = create_coords(N, distribute)
+
+% TODO: VECTORIZE!!!!
+XCoords = zeros(N,1);
+YCoords = zeros(N,1);
+if distribute
+    mdim = ceil(sqrt(N));
+    ind = 1;
+    for ii = 0:mdim-1
+        for jj=0:mdim-1
+            if ind<=N
+                XCoords(ind) = 1/mdim*rand(1)+ii*1/mdim;
+                YCoords(ind) = 1/mdim*rand(1)+jj*1/mdim;
+            end
+            ind = ind+1;
+        end
+    end
+else
+    % take random coordinates in a 1 by 1 square
+    XCoords = rand(N,1);
+    YCoords = rand(N,1);
+end
+
+
+end
 
 
